@@ -7,15 +7,12 @@ describe('All assests', () => {
         (response) => {  
 
           
-          //This line will verify th inputs property i.e.  plus the value of internal type i.e. unit256
           expect(response.body.data).to.have.property("result")
           expect(response.body.data).to.have.property("page")
           expect(response.body.data).to.have.property("total")
           expect(response.body.data).to.have.property("totalPages")
           expect(response.body.data.result[0]).to.have.property('id').equals(1)
-          //expect(response.body.data.result[0].id).to.equal(1)
           expect(response.body.data.result[1].imageName).contain('https://staging-assets.wrld.xyz/staging/WLM3mCfReZUXlJ7DN4e5.png')
-          //expect(response.body.data.result[1]).to.have.property('imageName')
           expect(response.body.data.result[2]).to.have.property('animationName')
           expect(response.body.data.result[3]).to.have.property('assetLocation')
           expect(response.body.data.result[4]).to.have.property('price')
