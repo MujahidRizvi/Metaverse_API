@@ -1,54 +1,41 @@
-describe('Get Asset by Type', () => {
-    context('GET /Asset Type', () => {
-      it('should show Asset by Type', () => {
+describe('Automation Test Suite - Fixtures', function () {
+  context('get /All Assets by Type', () => {
+    this.beforeEach(function () {
+      cy.fixture('data').then(function (testdata) {
+        this.testdata = testdata;
+      })
+    })
+
+      it('should show Asset by Type', function() {
         cy.request({
-          method: 'GET', url: 'https://staging-gateway.wrld.xyz/assets/getAssetsByType/land', headers: { "Cookie": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0" }, failOnStatusCode: false
+          method: this.testdata.get, url: this.testdata.AssetbyType, headers: { "Cookie": this.testdata.tokenA }, failOnStatusCode: false
         }).then(
           (response) => {
           
-            expect(response.body.data[0]).to.have.property("id")
-            expect(response.body.data[0]).to.have.property("contractId")
-            expect(response.body.data[0]).to.have.property("ownerId")
-            expect(response.body.data[0]).to.have.property("assetLocation")
-            expect(response.body.data[0]).to.have.property("price")
-            expect(response.body.data[0]).to.have.property("lat")
-            expect(response.body.data[0]).to.have.property("lon")
-            expect(response.body.data[0]).to.have.property("assetName")
-            expect(response.body.data[0]).to.have.property("seasonName")
-            expect(response.body.data[0]).to.have.property("assetType")
-            expect(response.body.data[0]).to.have.property("assetStatus")
-            expect(response.body.data[0]).to.have.property("imageName")
-            expect(response.body.data[0]).to.have.property("animationName")
-            expect(response.body.data[0]).to.have.property("isActive")
-            expect(response.body.data[0]).to.have.property("createdBy")
-            expect(response.body.data[0]).to.have.property("updatedBy")
-            expect(response.body.data[0]).to.have.property("description")
-            expect(response.body.data[0]).to.have.property("stickerName")
-            expect(response.body.data[0]).to.have.property("createdAt")
-            expect(response.body.data[0]).to.have.property("updatedAt")
-            
+            expect(response.body.data[0]).to.have.keys(this.testdata.DataforTypeorSeasonKeys)
+           
           })
-      });
-    })
+      })
     {
-      it('should not show Asset by Type', () => {
-       cy.request({method: 'GET', url:'https://staging-gateway.wrld.xyz/assets/getAssetsByType/land', headers: {}, failOnStatusCode: false}).then(
+      it('should not show Asset by Type', function() {
+       cy.request({method: this.testdata.get, url: this.testdata.AssetbyType, headers: {}, failOnStatusCode: false}).then(
          (response) => {
-          expect(response.body).contain('Unauthorized') 
+          expect(response.body).contain(this.testdata.uAuth) 
          })
 
-         cy.request({method: 'GET', url:'https://staging-gateway.wrld.xyz/assets/getAssetsByType/land', headers: {"Cookie": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E21234"}, failOnStatusCode: false}).then(
+         cy.request({method: this.testdata.get, url: this.testdata.AssetbyType, headers: {"Cookie": this.testdata.invalidToken}, failOnStatusCode: false}).then(
          (response) => {
-          expect(response.body).contain('Unauthorized') 
+          expect(response.body).contain(this.testdata.uAuth) 
          })
 
-         cy.request({method: 'GET', url:'https://staging-gateway.wrld.xyz/assets/getAssetsByType/land', headers: {"Cookie":"" }, failOnStatusCode: false}).then(
+         cy.request({method: this.testdata.get, url:this.testdata.AssetbyType, headers: {"Cookie":"" }, failOnStatusCode: false}).then(
          (response) => {
-          expect(response.body).contain('Unauthorized') 
+          expect(response.body).contain(this.testdata.uAuth) 
          })
    })
    }
   })
+})
   
   
   

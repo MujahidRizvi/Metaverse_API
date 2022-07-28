@@ -1,5 +1,5 @@
 describe('Automation Test Suite - Fixtures', function () {
-  context('get /All SeasonName', () => {
+  context('get /All Assets by SeasonName', () => {
     this.beforeEach(function () {
       cy.fixture('data').then(function (testdata) {
         this.testdata = testdata;
