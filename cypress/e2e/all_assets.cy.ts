@@ -5,10 +5,10 @@ describe('Automation Test Suite - Fixtures', function () {
         this.testdata = testdata;
       })
     })
- 
-//Positive TestCases
 
-    it('should show All assests', function()  {
+    //Positive TestCases
+
+    it('should show All assests', function () {
       cy.request({
         method: this.testdata.get, url: this.testdata.allAssests, headers: { "Cookie": this.testdata.btoken }, failOnStatusCode: false
       }).then(
@@ -18,23 +18,23 @@ describe('Automation Test Suite - Fixtures', function () {
           expect(response.status).eq(this.testdata.okStatus);
         })
     })
-  
-  {
-    it('should not show All assests', function() {
-      cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: {}, failOnStatusCode: false }).then(
-        (response) => {
-          expect(response.body).contain(this.testdata.uAuth)
-        })
-    })
-  }
-  {
-    it('should not show All assests', function() {
-      cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: { "Cookie": "" }, failOnStatusCode: false }).then(
-        (response) => {
-          expect(response.body).contain(this.testdata.uAuth)
-        })
-    })
-  }
 
-})
+    {
+      it('should not show All assests', function () {
+        cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: {}, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+      })
+    }
+    {
+      it('should not show All assests', function () {
+        cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: { "Cookie": "" }, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+      })
+    }
+
+  })
 })
