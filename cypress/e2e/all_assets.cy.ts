@@ -1,55 +1,40 @@
-describe('All assests', () => {
-  context('GET /All assests', () => {
-    it('should show All assests', () => {
-      cy.request({
-        method: 'GET', url: 'https://staging-gateway.wrld.xyz/assets', headers: { "Cookie": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0" }, failOnStatusCode: false
-      }).then(
-        (response) => {  
+describe('Automation Test Suite - Fixtures', function () {
+  context('get /All assets', () => {
+    this.beforeEach(function () {
+      cy.fixture('object_Data').then(function (testdata) {
+        this.testdata = testdata;
+      })
+    })
+ 
+//Positive TestCases
 
-          
-          expect(response.body.data).to.have.property("result")
-          expect(response.body.data).to.have.property("page")
-          expect(response.body.data).to.have.property("total")
-          expect(response.body.data).to.have.property("totalPages")
-          expect(response.body.data.result[0]).to.have.property('id').equals(1)
-          expect(response.body.data.result[1].imageName).contain('https://staging-assets.wrld.xyz/staging/WLM3mCfReZUXlJ7DN4e5.png')
-          expect(response.body.data.result[2]).to.have.property('animationName')
-          expect(response.body.data.result[3]).to.have.property('assetLocation')
-          expect(response.body.data.result[4]).to.have.property('price')
-          expect(response.body.data.result[5]).to.have.property('assetName')
-          expect(response.body.data.result[6]).to.have.property('seasonName')
-          expect(response.body.data.result[7]).to.have.property('assetStatus')
-          expect(response.body.data.result[8]).to.have.property('isActive')
-          expect(response.body.data.result[9]).to.have.property('lat')
-          expect(response.body.data.result[10]).to.have.property('lon')
-          expect(response.body.data.result[11]).to.have.property('createdBy')
-          expect(response.body.data.result[12]).to.have.property('updatedBy')
-          expect(response.status).to.eq(200);
-        })
-    });
-  })
-  {
-    it('should not show All assests', () => {
-      cy.request({ method: 'GET', url: 'https://staging-gateway.wrld.xyz/assets?', headers: {}, failOnStatusCode: false }).then(
+    it('should show All assests', function()  {
+      cy.request({
+        method: this.testdata.get, url: this.testdata.allAssests, headers: { "Cookie": this.testdata.btoken }, failOnStatusCode: false
+      }).then(
         (response) => {
-          expect(response.body).contain('Unauthorized') 
+          expect(response.body.data).to.have.keys(this.testdata.allassests)
+          expect(response.body.data.result[0]).to.have.property(this.testdata.resultProperties[0])
+          expect(response.status).eq(this.testdata.okStatus);
+        })
+    })
+  
+  {
+    it('should not show All assests', function() {
+      cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: {}, failOnStatusCode: false }).then(
+        (response) => {
+          expect(response.body).contain(this.testdata.uAuth)
         })
     })
   }
   {
-    it('should not show All assests', () => {
-      cy.request({ method: 'GET', url: 'https://staging-gateway.wrld.xyz/assets?', headers: {"Cookie": ""}, failOnStatusCode: false }).then(
+    it('should not show All assests', function() {
+      cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: { "Cookie": "" }, failOnStatusCode: false }).then(
         (response) => {
-          expect(response.body).contain('Unauthorized') 
+          expect(response.body).contain(this.testdata.uAuth)
         })
     })
   }
-  {
-    it('should not show All assests', () => {
-      cy.request({ method: 'GET', url: 'https://staging-gateway.wrld.xyz/assets?', headers: {"Cookie": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12"}, failOnStatusCode: false }).then(
-        (response) => {
-          expect(response.body).contain('Unauthorized') 
-        })
-    })
-  }
+
+})
 })
