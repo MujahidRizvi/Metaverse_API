@@ -1,0 +1,85 @@
+describe('Automation Test Suite - Fixtures', function () {
+    context('get /All assets', () => {
+      this.beforeEach(function () {
+        cy.fixture('object_Data').then(function (testdata) {
+          this.testdata = testdata;
+        })
+      })
+  //Positive TestCases
+      it('should show All assests', function()  {
+        cy.request({
+          method: this.testdata.get, url: this.testdata.allAssests, headers: { "Cookie": this.testdata.btoken }, failOnStatusCode: false
+        }).then(
+          (response) => {
+            expect(response.body.data).to.have.keys(this.testdata.allassests)
+            expect(response.body.data.result[0]).to.have.property(this.testdata.resultProperties[0])
+            expect(response.status).eq(this.testdata.okStatus);
+          })
+      })
+    {
+      it('should not show All assests', function() {
+        cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: {}, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+      })
+    }
+    {
+      it('should not show All assests', function() {
+        cy.request({ method: this.testdata.get, url: this.testdata.allAssests, headers: { "Cookie": "" }, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+      })
+    }
+  })
+  })
+  6:15
+  api file
+  6:15
+  {
+      "allAssests": "https://staging-gateway.wrld.xyz/assets",
+      "btoken": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0",
+      "post": "post",
+      "get": "GET",
+      "put": "PUT",
+      "pKey": "0x6ebb625b6dc64614d87fa978e6fa7756843775b9",
+      "pType": "wallet",
+      "invalidpKey": "0x6ebb625b6dc64614d87fa978e6fa775684355555",
+      "invalidpType": "gold",
+      "screenName": "Chris Alex",
+      "allassests": [
+          "result",
+          "page",
+          "total",
+          "totalPages"
+      ],
+      "resultProperties": [
+          "id",
+          "imageName",
+          "animationName",
+          "assetLocation",
+          "price",
+          "assetName",
+          "seasonName",
+          "assetStatus",
+          "isActive",
+          "lat",
+          "lon",
+          "createdBy",
+          "updatedBy"
+      ],
+      "userInfoErrorProperties": [
+          "error",
+          "success"
+      ],
+      "okStatus": 200,
+      "badRequestStatus": 400,
+      "unprocessableEntityStatus": 422,
+      "internalServerErrorStatus": 500,
+      "msg": "message",
+      "invalidProviderErrorMsg": "invalid provider type.",
+      "notAuthenticatedErrorMsg": "Not authenticated.",
+      "screenNameReqErrorMsg": "user screen name is required.",
+      "uAuth": "Unauthorized"
+  }
