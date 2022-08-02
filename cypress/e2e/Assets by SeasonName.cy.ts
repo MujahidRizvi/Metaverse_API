@@ -15,7 +15,7 @@ describe('Automation Test Suite - Fixtures', function () {
 
         })
     })
-
+    
     {
       it('should not show Asset by Season Name', function() {
         cy.request({ method: this.testdata.get, url: this.testdata.AssetbySeason, headers: {}, failOnStatusCode: false }).then(
