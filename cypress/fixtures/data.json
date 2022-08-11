@@ -4,9 +4,12 @@
 	"AssetbySeason" : "https://staging-services.wrld.xyz/assets/getAssetsBySeason/season-1",
 	"Allcontdefine" : "https://staging-services.wrld.xyz/contracts",
 	"ContractsbyAssetType" : "https://staging-services.wrld.xyz/contracts/getContractsByAssetType/land",
+	"UpdateAssetbyId" : "https://staging-services.wrld.xyz/assets/update/10",
 
 	"get" : "GET",
 	"put" : "PUT",
+	"post" : "POST",
+
 	"tokenA" : "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0",
 	"invalidToken" : "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E21234",
 
@@ -57,6 +60,27 @@
 		"logoImage",
 		"featuredImage",
 		"bannerImage"
+	],
+	"UpdtaeassetbyIdKeys" : [
+		"id",
+		"contractId",
+		"ownerId",
+		"price",
+		"lat",
+		"lon",
+		"assetName",
+		"seasonName",
+		"assetType",
+		"assetStatus",
+		"imageName",
+		"animationName",
+		"isActive",
+		"createdBy",
+		"updatedBy",
+		"description",
+		"stickerName",
+		"attributes",
+		"createdAt"
 	],
 	"ContdefineforAbi" : [
 		"inputs",
