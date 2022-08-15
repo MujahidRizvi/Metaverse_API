@@ -1,5 +1,9 @@
 {
     "allAssests": "https://staging-gateway.wrld.xyz/assets",
+    "radiusURL":"https://staging-gateway.wrld.xyz/assets/getAssetsByTypeAndLatLonRadius/?assetType=land&lat=0.004204819&lon=0.02794890&radius=100",
+    "contrctURL":"http://staging-gateway.wrld.xyz/contracts/create",
+    "allAssestsByID": "https://staging-gateway.wrld.xyz/assets/GetById/1",
+    "invalidbtoken": "token=eyJhbGciOiJI.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0",
     "btoken": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0",
     "post": "post",
     "get": "GET",
@@ -14,6 +18,22 @@
         "page",
         "total",
         "totalPages"    
+    ],
+    "resultPropertiesByID": [
+        "id",
+        "contractId",
+        "imageName",
+        "animationName",
+        "assetLocation",
+        "price",
+        "assetName",
+        "seasonName",
+        "assetStatus",
+        "isActive",
+        "lat",
+        "lon",
+        "createdBy",
+        "updatedBy"
     ],
     "resultProperties": [
         "id",
@@ -30,11 +50,48 @@
         "createdBy",
         "updatedBy"
     ],
+    "landProperties": [
+        "contractId",
+        "imageName",
+        "animationName",
+        "assetLocation",
+        "price",
+        "ownerId",
+        "assetName",
+        "seasonName",
+        "assetStatus",
+        "assetType",
+        "lat",
+        "lon",
+        "distance",
+        "isActive"
+    ],
     
     "userInfoErrorProperties": [
         "error",
         "success"
     ],
+    "contractBody":[
+        "Season-1",
+        "land"
+    ],
+    "contractInputs":[
+        "internalType",
+        "name",
+        "type"
+    ],
+    "contractProperty":[
+        "id",
+        "seasonName",
+        "assetType",
+        "contractAddress"
+    ],
+    "contractAbi":[
+        "inputs"
+    ],
+    "internalType":"uint256",
+    "name":"_maxWhitelistCount",
+    "type":"uint256",
     "okStatus": 200,
     "badRequestStatus": 400,
     "unprocessableEntityStatus": 422,
