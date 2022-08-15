@@ -7,10 +7,9 @@ describe('Automation Test Suite - Fixtures', function () {
     })
     it('should show All assestsin 100m radius', function () {
       cy.request({
-        method:this.testdata.get, url: this.testdata.radiusURL, headers: { "Cookie":this.testdata.btoken }, failOnStatusCode: false
+        method: this.testdata.get, url: this.testdata.radiusURL, headers: { "Cookie": this.testdata.btoken }, failOnStatusCode: false
       }).then(
         (response) => {
-          //This line will verify th inputs property i.e.  plus the value of internal type i.e. unit256
           expect(response.body.data).to.contain.keys(this.testdata.allassests)
           expect(response.body.data.result[0]).to.have.property(this.testdata.landProperties[0])
           expect(response.status).eq(this.testdata.okStatus);
@@ -19,15 +18,15 @@ describe('Automation Test Suite - Fixtures', function () {
   })
   {
     it('should not show All assests in 100m radius', function () {
-      cy.request({ method:this.testdata.get,url: this.testdata.radiusURL, headers: {}, failOnStatusCode: false }).then(
+      cy.request({ method: this.testdata.get, url: this.testdata.radiusURL, headers: {}, failOnStatusCode: false }).then(
         (response) => {
           expect(response.body).contain(this.testdata.uAuth)
         })
     })
   }
   {
-    it('should not show All assests in 100m radius', function ()  {
-      cy.request({ method:this.testdata.get,url:this.testdata.radiusURL, headers: {"Cookie": ""}, failOnStatusCode: false }).then(
+    it('should not show All assests in 100m radius', function () {
+      cy.request({ method: this.testdata.get, url: this.testdata.radiusURL, headers: { "Cookie": "" }, failOnStatusCode: false }).then(
         (response) => {
           expect(response.body).contain(this.testdata.uAuth)
         })
