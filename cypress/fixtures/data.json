@@ -5,6 +5,8 @@
 	"Allcontdefine" : "https://staging-services.wrld.xyz/contracts",
 	"ContractsbyAssetType" : "https://staging-services.wrld.xyz/contracts/getContractsByAssetType/land",
 	"UpdateAssetbyId" : "https://staging-services.wrld.xyz/assets/update/10",
+	"ExportLand" : "https://staging-services.wrld.xyz/assets/export/land",
+	"UploadFiles" : "https://staging-services.wrld.xyz/assets/uploadFiles",
 
 	"get" : "GET",
 	"put" : "PUT",
@@ -12,6 +14,7 @@
 
 	"tokenA" : "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0",
 	"invalidToken" : "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E21234",
+	"InValidURL" : "https://staging-services.wrld.xyz/assets/export/",
 
 	"OwnerIdKeys" : [
 		"result",
@@ -61,6 +64,11 @@
 		"featuredImage",
 		"bannerImage"
 	],
+			"ContdefineforAbi" : [
+		"inputs",
+		"stateMutability",
+		"type"
+	],
 	"UpdtaeassetbyIdKeys" : [
 		"id",
 		"contractId",
@@ -82,11 +90,24 @@
 		"attributes",
 		"createdAt"
 	],
-	"ContdefineforAbi" : [
-		"inputs",
-		"stateMutability",
-		"type"
+	"UploadFilesKeys" : [
+		"id",
+		"contractId",
+		"ownerId0",
+		"total",
+		"page",
+		"size"
 	],
+	"ExportLandKeys" : [
+		"type",
+		"name",
+		"totalPages",
+		"total",
+		"page",
+		"size"
+	],
+
+	
 	"okStatus": 200,
     "badRequestStatus": 400,
     "unprocessableEntityStatus": 422,
@@ -95,5 +116,6 @@
     "invalidProviderErrorMsg": "invalid provider type.",
     "notAuthenticatedErrorMsg": "Not authenticated.",
     "screenNameReqErrorMsg": "user screen name is required.",
-    "uAuth": "Unauthorized"
+    "uAuth": "Unauthorized",
+	"MissingParamURL" : "Cannot GET /assets/export/"
 }
