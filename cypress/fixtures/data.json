@@ -1,19 +1,25 @@
 {
-	"AssetbyOwner" : "https://staging-gateway.wrld.xyz/assets/getAssetsByOwner/:id",
-	"AssetbyType" : "https://staging-gateway.wrld.xyz/assets/getAssetsByType/land",
-	"AssetbySeason" : "https://staging-gateway.wrld.xyz/assets/getAssetsBySeason/season-1",
-
-	"get" : "GET",
-	"tokenA" : "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0",
-	"invalidToken" : "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E21234",
-
-	"OwnerIdKeys" : [
+	"AssetbyOwner": "https://staging-services.wrld.xyz/assets/getAssetsByOwner/:id",
+	"AssetbyType": "https://staging-services.wrld.xyz/assets/getAssetsByType/land",
+	"AssetbySeason": "https://staging-services.wrld.xyz/assets/getAssetsBySeason/season-1",
+	"Allcontdefine": "https://staging-services.wrld.xyz/contracts",
+	"ContractsbyAssetType": "https://staging-services.wrld.xyz/contracts/getContractsByAssetType/land",
+	"UpdateAssetbyId": "https://staging-services.wrld.xyz/assets/update/10",
+	"ExportLand": "https://staging-services.wrld.xyz/assets/export/land",
+	"UploadFiles": "https://staging-services.wrld.xyz/assets/uploadFiles",
+	"get": "GET",
+	"put": "PUT",
+	"post": "POST",
+	"tokenA": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E2XYy0",
+	"invalidToken": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1Mjc5MDI1NCwiZXhwIjoxNjg0MzI2MjU0fQ.2vIFGELbH54q12-b1SIMwm0Eh7BLmdJMpPEX3E21234",
+	"InValidURL": "https://staging-services.wrld.xyz/assets/export/",
+	"OwnerIdKeys": [
 		"result",
 		"total",
 		"page",
 		"totalPages"
 	],
-	"DataforTypeorSeasonKeys" : [
+	"DataforTypeorSeasonKeys": [
 		"id",
 		"contractId",
 		"ownerId",
@@ -35,13 +41,62 @@
 		"createdAt",
 		"updatedAt"
 	],
+	"AllContdefineorAssetTypeKeys": [
+		"id",
+		"seasonName",
+		"assetType",
+		"contractAddress"
+	],
+	"ContdefineforAbi": [
+		"inputs",
+		"stateMutability",
+		"type"
+	],
+	"UpdtaeassetbyIdKeys": [
+		"id",
+		"contractId",
+		"ownerId",
+		"price",
+		"lat",
+		"lon",
+		"assetName",
+		"seasonName",
+		"assetType",
+		"assetStatus",
+		"imageName",
+		"animationName",
+		"isActive",
+		"createdBy",
+		"updatedBy",
+		"description",
+		"stickerName",
+		"attributes",
+		"createdAt"
+	],
+	"UploadFilesKeys": [
+		"id",
+		"contractId",
+		"ownerId0",
+		"total",
+		"page",
+		"size"
+	],
+	"ExportLandKeys": [
+		"type",
+		"name",
+		"totalPages",
+		"total",
+		"page",
+		"size"
+	],
 	"okStatus": 200,
-    "badRequestStatus": 400,
-    "unprocessableEntityStatus": 422,
-    "internalServerErrorStatus": 500,
-    "msg": "message",
-    "invalidProviderErrorMsg": "invalid provider type.",
-    "notAuthenticatedErrorMsg": "Not authenticated.",
-    "screenNameReqErrorMsg": "user screen name is required.",
-    "uAuth": "Unauthorized"
+	"badRequestStatus": 400,
+	"unprocessableEntityStatus": 422,
+	"internalServerErrorStatus": 500,
+	"msg": "message",
+	"invalidProviderErrorMsg": "invalid provider type.",
+	"notAuthenticatedErrorMsg": "Not authenticated.",
+	"screenNameReqErrorMsg": "user screen name is required.",
+	"uAuth": "Unauthorized",
+	"MissingParamURL": "Cannot GET /assets/export/"
 }
