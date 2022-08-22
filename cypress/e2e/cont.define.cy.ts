@@ -6,37 +6,36 @@ describe('Automation Test Suite - Fixtures', function () {
       })
     })
 
-    it('should show all contracts', function() {
+    it('should show all contracts', function () {
       cy.request({
         method: this.testdata.get, url: this.testdata.Allcontdefine, headers: { "Cookie": this.testdata.tokenA }, failOnStatusCode: false
       }).then(
         (response) => {
-           expect(response.body.data[0]).to.contain.keys(this.testdata.AllContdefineorAssetTypeKeys)
-           expect(response.body.data[0].contractAbi[0]).to.contain.keys(this.testdata.ContdefineforAbi)
-          
+          expect(response.body.data.results[0]).to.contain.keys(this.testdata.AllContdefineorAssetTypeKeys)
+          expect(response.body.data.results[0].contractAbi[0]).to.contain.keys(this.testdata.ContdefineforAbi)
         })
-    }) 
+    })
 
-  {
-    it('should not show all contracts', function() {
-     cy.request({method: this.testdata.get, url: this.testdata.Allcontdefine, headers: {}, failOnStatusCode: false}).then(
-       (response) => {
-        expect(response.body).contain(this.testdata.uAuth) 
-       })
-
-       cy.request({method: this.testdata.get, url: this.testdata.Allcontdefine, headers: { "Cookie": "" }, failOnStatusCode: false}).then(
-        (response) => {
-         expect(response.body).contain(this.testdata.uAuth) 
-        })
-
-        cy.request({method: this.testdata.get, url: this.testdata.Allcontdefine, headers: { "Cookie": this.testdata.invalidToken}, failOnStatusCode: false}).then(
+    {
+      it('should not show all contracts', function () {
+        cy.request({ method: this.testdata.get, url: this.testdata.Allcontdefine, headers: {}, failOnStatusCode: false }).then(
           (response) => {
-           expect(response.body).contain(this.testdata.uAuth) 
+            expect(response.body).contain(this.testdata.uAuth)
           })
 
- })
- }
-})
+        cy.request({ method: this.testdata.get, url: this.testdata.Allcontdefine, headers: { "Cookie": "" }, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+
+        cy.request({ method: this.testdata.get, url: this.testdata.Allcontdefine, headers: { "Cookie": this.testdata.invalidToken }, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+
+      })
+    }
+  })
 })
 
 

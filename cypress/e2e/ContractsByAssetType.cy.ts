@@ -6,48 +6,47 @@ describe('Automation Test Suite - Fixtures', function () {
       })
     })
 
-      it('should show all contracts by asset type', function() {
-        cy.request({
-          method: this.testdata.get, url: this.testdata.ContractsbyAssetType, headers: { "Cookie": this.testdata.tokenA }, failOnStatusCode: false
-        }).then(
-          (response) => {
-  
+    it('should show all contracts by asset type', function () {
+      cy.request({
+        method: this.testdata.get, url: this.testdata.ContractsbyAssetType, headers: { "Cookie": this.testdata.tokenA }, failOnStatusCode: false
+      }).then(
+        (response) => {
+
           expect(response.body.data[0]).to.contain.keys(this.testdata.AllContdefineorAssetTypeKeys)
-            
+
+        })
+    })
+    {
+      it('should not show all contracts by asset type', function () {
+        cy.request({ method: this.testdata.get, url: this.testdata.ContractsbyAssetType, headers: {}, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+
+        cy.request({ method: this.testdata.get, url: this.testdata.ContractsbyAssetType, headers: { "Cookie": "" }, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
+          })
+
+        cy.request({ method: this.testdata.get, url: this.testdata.ContractsbyAssetType, headers: { "Cookie": this.testdata.invalidToken }, failOnStatusCode: false }).then(
+          (response) => {
+            expect(response.body).contain(this.testdata.uAuth)
           })
       })
-    {
-      it('should not show all contracts by asset type', function() {
-       cy.request({method: this.testdata.get, url: this.testdata.ContractsbyAssetType, headers: {}, failOnStatusCode: false}).then(
-         (response) => {
-          expect(response.body).contain(this.testdata.uAuth) 
-         })
-
-         cy.request({method: this.testdata.get, url: this.testdata.ContractsbyAssetType, headers: {"Cookie": ""}, failOnStatusCode: false}).then(
-           (response) => {
-            expect(response.body).contain(this.testdata.uAuth)
-           })
-    
-           cy.request({method: this.testdata.get, url:this.testdata.ContractsbyAssetType, headers: {"Cookie": this.testdata.invalidToken}, failOnStatusCode: false}).then(
-            (response) => {
-             expect(response.body).contain(this.testdata.uAuth)
-            })
-   })
-   }
+    }
   })
 })
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
