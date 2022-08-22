@@ -13,6 +13,7 @@ describe('Automation Test Suite - Fixtures', function () {
         (response) => {
            expect(response.body.data[0]).to.contain.keys(this.testdata.AllContdefineorAssetTypeKeys)
            expect(response.body.data[0].contractAbi[0]).to.contain.keys(this.testdata.ContdefineforAbi)
+          
         })
     }) 
 

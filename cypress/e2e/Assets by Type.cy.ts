@@ -12,7 +12,7 @@ describe('Automation Test Suite - Fixtures', function () {
         }).then(
           (response) => {
           
-            expect(response.body.data[0]).to.have.keys(this.testdata.DataforTypeorSeasonKeys)
+            expect(response.body.data[0]).to.contain.keys(this.testdata.DataforTypeorSeasonKeys)
            
           })
       })

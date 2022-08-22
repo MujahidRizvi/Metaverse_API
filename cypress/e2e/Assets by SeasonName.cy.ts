@@ -11,7 +11,8 @@ describe('Automation Test Suite - Fixtures', function () {
         method: this.testdata.get, url: this.testdata.AssetbySeason, headers: { "Cookie": this.testdata.tokenA }, failOnStatusCode: false
       }).then(
         (response) => {
-          expect(response.body.data[0]).to.have.keys(this.testdata.DataforTypeorSeasonKeys)
+          cy.wait(12000)
+          expect(response.body.data[0]).to.contain.keys(this.testdata.DataforTypeorSeasonKeys)
 
         })
     })
