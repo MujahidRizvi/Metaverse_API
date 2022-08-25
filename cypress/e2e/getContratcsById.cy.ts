@@ -7,14 +7,14 @@ describe('Automation Test Suite - Fixtures', function () {
       })
         it('should successfully get Contract BySeason', function() {
             cy.request({
-                method: 'GET', url: this.testcase.url2,
-                headers: { "Cookie": this.testcase.token }, 
+                method: 'GET', url: this.testdata.url2,
+                headers: { "Cookie": this.testdata.token }, 
                 failOnStatusCode: false
             }).then(
                 (response) => {
-                    expect(response.body.data.seasonName).contain(this.testcase.season)
+                    expect(response.body.data.seasonName).contain(this.testdata.season)
                     expect(response.body.data.id).equals(1)
-                    expect(response.body.data.assetType).contain(this.testcase.land)
+                    expect(response.body.data.assetType).contain(this.testdata.land)
                   
                 })
         })

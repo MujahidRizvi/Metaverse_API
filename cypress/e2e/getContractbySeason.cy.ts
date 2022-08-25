@@ -13,7 +13,9 @@ describe('Automation Test Suite - Fixtures', function () {
                 failOnStatusCode: false
             }).then(
                 (response) => {
-                    expect(response.body.data).contain(this.testdata.season)
+
+                 expect(response.body.data[0]).to.contain.keys(this.testdata.seasonname)
+                 
                 })
         })
     })
